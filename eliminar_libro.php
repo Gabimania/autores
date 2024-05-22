@@ -6,7 +6,7 @@ include("conection.php");
 if(isset($_GET['idlibro'])) {
     $idlibro = $_GET['idlibro'];
 
-    // Obtener los detalles del libro a editar
+    // Obtener los detalles del libro a eliminar
     $sql = "SELECT l.idlibro as idlibro, l.name as name, l.imagen as imagen, a.name as autor 
             FROM libro as l
             INNER JOIN autor as a ON l.idautor = a.idautor
