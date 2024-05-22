@@ -35,15 +35,33 @@ if(isset($_GET['idlibro'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Libro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 0 15px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Eliminar Libro</h1>
-    <img src="assets/img/<?php echo htmlspecialchars($libro['imagen']); ?>" alt="<?php echo htmlspecialchars($libro['name']); ?>">
-    <p><strong>Nombre del libro:</strong> <?php echo htmlspecialchars($libro['name']); ?></p>
-    <p><strong>Autor:</strong> <?php echo htmlspecialchars($libro['autor']); ?></p>
-    <form method="post">
-        <input type="hidden" name="idlibro" value="<?php echo $libro['idlibro']; ?>">
-        <button type="submit" name="eliminar_libro">Eliminar Libro</button>
-    </form>
+    <div class="container">
+        <h1 class="mb-4">Eliminar Libro</h1>
+        <img src="assets/img/<?php echo htmlspecialchars($libro['imagen']); ?>" alt="<?php echo htmlspecialchars($libro['name']); ?>" class="img-fluid mb-3">
+        <p><strong>Nombre del libro:</strong> <?php echo htmlspecialchars($libro['name']); ?></p>
+        <p><strong>Autor:</strong> <?php echo htmlspecialchars($libro['autor']); ?></p>
+        <form method="post">
+            <input type="hidden" name="idlibro" value="<?php echo $libro['idlibro']; ?>">
+            <button type="submit" name="eliminar_libro" class="btn btn-danger">Eliminar Libro</button>
+        </form>
+    </div>
 </body>
 </html>

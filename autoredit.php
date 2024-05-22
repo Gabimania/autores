@@ -34,16 +34,42 @@ if(isset($_SESSION["idautor"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar datos personales</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 0 15px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <a href="autor.php">Volver</a>
-    <h1>Modificar datos personales</h1>
-    <form method="post">
-    <input type="text" name="name" id="name" placeholder="Name" value="<?php echo $datos["name"] ?>">
-    <input type="email" name="email" id="email" placeholder="Email" value="<?php echo $datos["email"] ?>">
-    <input type="password" name="password" id="password" placeholder="Password" value="<?php echo $datos["password"] ?>">
-    <button type="submit">Modificar datos</button> 
-</form>
-
+    <div class="container">
+        <a href="#" class="btn btn-primary mb-3">Volver</a>
+        <h1 class="mb-3">Modificar datos personales</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="<?php echo $datos["name"] ?>">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $datos["email"] ?>">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $datos["password"] ?>">
+            </div>
+            <button type="submit" class="btn btn-primary">Modificar datos</button> 
+        </form>
+    </div>
 </body>
 </html>

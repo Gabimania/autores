@@ -2,7 +2,6 @@
 session_start();
 $idautor = $_SESSION["idautor"];
 
-
 if (isset($_SESSION["idautor"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include("conection.php");
@@ -19,10 +18,8 @@ if (isset($_SESSION["idautor"])) {
         // Verificar si el archivo es una imagen
         $check = getimagesize($_FILES["imagen"]["tmp_name"]);
         if ($check !== false) {
-    
             $uploadOk = 1;
         } else {
-        
             $uploadOk = 0;
         }
 
@@ -51,7 +48,7 @@ if (isset($_SESSION["idautor"])) {
                     $stmt->bindParam(3, $idautor);
 
                     if ($stmt->execute()) {
-                        
+                        header("Location:autor.php");
                     } else {
                         echo "Error al añadir el libro";
                     }
@@ -74,18 +71,38 @@ if (isset($_SESSION["idautor"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir Libro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 0 15px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Subir un nuevo libro</h1>
-    <form method="post" action="" enctype="multipart/form-data">
-        <label>Nombre del libro</label>
-        <input type="text" name="name" id="name" required>
-        <label>Imagen del Libro</label>
-        <input type="file" name="imagen" id="imagen" required>
-        <input type="hidden" name="idautor" value="<?php echo $_SESSION['idautor']; ?>">
-        <input type="submit" name="submit" value="Añadir">
-    </form>
-
-    <?php if (isset($msg)) { echo $msg; } ?>
+    <div class="container">
+        <h1 class="mb-3">Subir un nuevo libro</h1>
+        <form method="post" action="" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Nombre del libro</label>
+                <input type="text" class="form-control" name="name" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="imagen">Imagen del Libro</label>
+                <input type="file" class="form-control-file" name="imagen" id="imagen" required>
+            </div>
+            <input type="hidden" name="idautor" value="<?php echo $_SESSION['idautor']; ?>">
+            <button type="submit" class="btn btn-primary">Añadir</button>
+        </form>
+    </div>
 </body>
 </html>

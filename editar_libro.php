@@ -34,21 +34,40 @@ if(isset($_GET['idlibro'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar nombre del libro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 0 15px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Editar nombre del libro</h1>
-    <img src="assets/img/<?php echo htmlspecialchars($libro['imagen']); ?>" alt="<?php echo htmlspecialchars($libro['name']); ?>">
-    <p><strong>Nombre del libro:</strong> <?php echo htmlspecialchars($libro['name']); ?></p>
-    <p><strong>Autor:</strong> <?php echo htmlspecialchars($libro['autor']); ?></p>
-    <form method="post" action="">
-        <input type="hidden" name="idlibro" value="<?php echo $libro['idlibro']; ?>">
-        <label for="libroname">Nuevo nombre del libro:</label>
-        <input type="text" id="libroname" name="libroname" value="<?php echo htmlspecialchars($libro['name']); ?>">
-        <button type="submit">Guardar Cambios</button>
-    </form>
+    <div class="container">
+        <h1 class="mb-4">Editar nombre del libro</h1>
+        <img src="assets/img/<?php echo htmlspecialchars($libro['imagen']); ?>" alt="<?php echo htmlspecialchars($libro['name']); ?>" class="img-fluid mb-3">
+        <p><strong>Nombre del libro:</strong> <?php echo htmlspecialchars($libro['name']); ?></p>
+        <p><strong>Autor:</strong> <?php echo htmlspecialchars($libro['autor']); ?></p>
+        <form method="post" action="">
+            <input type="hidden" name="idlibro" value="<?php echo $libro['idlibro']; ?>">
+            <div class="form-group">
+                <label for="libroname">Nuevo nombre del libro:</label>
+                <input type="text" id="libroname" name="libroname" value="<?php echo htmlspecialchars($libro['name']); ?>" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
 </body>
 </html>
 <?php
-      
     }
 ?>
